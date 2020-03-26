@@ -21,15 +21,6 @@ jobs:
     - uses: actions/checkout@v2
       with:
           token: ${{ secrets.NOTE_TOKEN }}
-  
-    - name: set env
-      run: |
-        export MS="$(git --no-pager log  --pretty=%an -1)"
-        echo "::set-env name=MSG::$MS"
-    
-    - name: check status
-      if: ${{ env.MSG }} != "github action"
-      run: echo ${{ env.MSG }}
 
     # Runs a single command using the runners shell
     - name: Setup Node.js for use with actions
