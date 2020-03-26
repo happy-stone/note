@@ -23,11 +23,11 @@ jobs:
           token: ${{ secrets.NOTE_TOKEN }}
   
     - name: set env
-      run: echo "::set-env name=message::$(git --no-pager log  --pretty=%an -1)"
+      run: echo "::set-env name=MSG::$(git --no-pager log  --pretty=%an -1)"
     
     - name: check status
-      if: ! contains(${{ env.message }}, "github action")
-      run: echo ${{ env.message }}
+      if: ! contains(${{ env.MSG }}, "github action")
+      run: echo ${{ env.MSG }}
 
     # Runs a single command using the runners shell
     - name: Setup Node.js for use with actions
