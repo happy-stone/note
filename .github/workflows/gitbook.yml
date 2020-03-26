@@ -41,5 +41,5 @@ jobs:
         mv _book/* .
         git add .
         git commit -m "gitbook build"
-        git push --force
+        git push --force --set-upstream origin page
           
