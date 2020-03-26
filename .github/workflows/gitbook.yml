@@ -23,7 +23,9 @@ jobs:
           token: ${{ secrets.NOTE_TOKEN }}
   
     - name: set env
-      run: echo "::set-env name=MSG::$(git --no-pager log  --pretty=%an -1)"
+      run: |
+        export MS="$(git --no-pager log  --pretty=%an -1)"
+        echo "::set-env name=MSG::$MS"
     
     - name: check status
       if: ! contains(${{ env.MSG }}, "github action")
