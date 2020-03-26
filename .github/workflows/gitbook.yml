@@ -36,7 +36,6 @@ jobs:
       run: |
         git config --global user.name 'github action'
         git config --global user.email 'action@github.com'
-        git branch -d page
         git checkout -b page
         mv _book/* .
         git add .
