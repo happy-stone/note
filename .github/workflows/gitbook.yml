@@ -28,7 +28,7 @@ jobs:
         echo "::set-env name=MSG::$MS"
     
     - name: check status
-      if: ! contains(${{ env.MSG }}, "github action")
+      if: ${{ env.MSG }} != "github action"
       run: echo ${{ env.MSG }}
 
     # Runs a single command using the runners shell
