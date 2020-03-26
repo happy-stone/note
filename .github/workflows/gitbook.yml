@@ -28,7 +28,7 @@ jobs:
         echo "::set-env name=MSG::$MS"
     
     - name: check status
-      if: startsWith(env.MSG, "github")
+      if: startsWith(env.MSG, 'github')
       run: exit 1
 
     # Runs a single command using the runners shell
