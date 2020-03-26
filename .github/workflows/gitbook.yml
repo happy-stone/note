@@ -26,8 +26,7 @@ jobs:
       run: echo "::set-env name=message::$(git --no-pager log  --pretty=%an -1)"
     
     - name: check status
-      if: contains(${{ env.message }}, "github action")
-      run: exit 1
+      if: ! contains(${{ env.message }}, "github action")
 
     # Runs a single command using the runners shell
     - name: Setup Node.js for use with actions
