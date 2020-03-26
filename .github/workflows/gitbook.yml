@@ -23,14 +23,17 @@ jobs:
     # Runs a single command using the runners shell
     - name: Setup Node.js for use with actions
       uses: actions/setup-node@v1.1.0
+    
+    - name: build
+      run: |
+        npm install gitbook-cli -g
+        gitbook build
 
     # Runs a set of commands using the runners shell
-    - name: Run a multi-line script
+    - name: commit
       run: |
         git branch -d page
         git checkout -b page
-        npm install gitbook-cli -g
-        gitbook build
         mv _book/* .
         git add .
         git commit -m "gitbook build"
