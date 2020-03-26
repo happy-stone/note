@@ -21,9 +21,12 @@ jobs:
     - uses: actions/checkout@v2
       with:
           token: ${{ secrets.NOTE_TOKEN }}
+  
+    - name: set env
+      run: echo "::set-env name=message::$(git --no-pager log  --pretty=%an -1)"
     
     - name: check status
-      if: contains($(git --no-pager log  --pretty=%an -1), "github action")
+      if: contains({message}, "github action")
       run: exit 1
 
     # Runs a single command using the runners shell
