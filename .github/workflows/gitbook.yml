@@ -19,6 +19,8 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
+      with:
+          token: ${{ secrets.NOTE_TOKEN }}
 
     # Runs a single command using the runners shell
     - name: Setup Node.js for use with actions
@@ -32,6 +34,8 @@ jobs:
     # Runs a set of commands using the runners shell
     - name: commit
       run: |
+        git config --global user.name 'github action'
+        git config --global user.email 'action@github.com'
         git branch -d page
         git checkout -b page
         mv _book/* .
