@@ -27,7 +27,7 @@ jobs:
     
     - name: check status
       if: ! contains(${{ env.message }}, "github action")
-      run: git --no-pager log  -1 
+      run: echo ${{ env.message }}
 
     # Runs a single command using the runners shell
     - name: Setup Node.js for use with actions
