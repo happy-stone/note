@@ -36,10 +36,10 @@ jobs:
       run: |
         git config --global user.name 'github action'
         git config --global user.email 'action@github.com'
-        git checkout -b page
-        ls | grep -v _book |xargs rm -rf
-        mv _book/* .
-        git add .
+        ls | grep docs |xargs rm -rf
+        mv _book  docs
+        ls | grep _book |xargs rm -rf
+        git add docs
         git commit -m "gitbook build"
-        git push --force --set-upstream origin page
+        git push --force --set-upstream origin master
           
