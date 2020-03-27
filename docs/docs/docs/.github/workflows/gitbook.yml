@@ -28,8 +28,8 @@ jobs:
         echo "::set-env name=MSG::$MS"
     
     - name: check status
-      if: ${{ env.MSG }} != "github action"
-      run: echo ${{ env.MSG }}
+      if: startsWith(env.MSG, 'github')
+      run: exit 1
 
     # Runs a single command using the runners shell
     - name: Setup Node.js for use with actions
