@@ -36,6 +36,7 @@ jobs:
       if: startsWith(env.MSG, 'github')  != true 
       run: |
         npm install gitbook-cli -g
+        ls | grep docs |xargs rm -rf
         gitbook build
 
     # Runs a set of commands using the runners shell
@@ -44,7 +45,6 @@ jobs:
       run: |
         git config --global user.name 'github action'
         git config --global user.email 'action@github.com'
-        ls | grep docs |xargs rm -rf
         mv _book  docs
         ls | grep _book |xargs rm -rf
         git add docs
