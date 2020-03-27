@@ -1,4 +1,4 @@
-![golang logo](./image/go-logo-blue.svg)
+![golang logo](../image/go-logo-blue.svg)
 
 ## 学习资料 ##
 1. 官网 [https://golang.google.cn](https://golang.google.cn) (中文站[https://go-zh.org](https://go-zh.org))
