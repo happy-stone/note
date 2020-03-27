@@ -26,22 +26,21 @@ jobs:
       run: |
         export MS="$(git --no-pager log  --pretty=%an -1)"
         echo "::set-env name=MSG::$MS"
-    
-    - name: check status
-      if: startsWith(env.MSG, 'github')
-      run: exit 1
 
     # Runs a single command using the runners shell
     - name: Setup Node.js for use with actions
+      if: startsWith(env.MSG, 'github')  != true 
       uses: actions/setup-node@v1.1.0
     
     - name: build
+      if: startsWith(env.MSG, 'github')  != true 
       run: |
         npm install gitbook-cli -g
         gitbook build
 
     # Runs a set of commands using the runners shell
     - name: commit
+      if: startsWith(env.MSG, 'github')  != true 
       run: |
         git config --global user.name 'github action'
         git config --global user.email 'action@github.com'
