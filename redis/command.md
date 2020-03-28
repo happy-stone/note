@@ -5,11 +5,14 @@
 
 | 命令      | 格式                                      | 说明                                                         |
 | --------- | ----------------------------------------- | ------------------------------------------------------------ |
+|   SELECT |  select db | 切换数据库  |
+| KEYS | keys pattern |  获取与 pattern 匹配的 keys |
 | EXISTS    | EXISTS key                                | key 是否存在                                                 |
 | DEL       | DEL k1 k2 k3                              | 删除 key（会产生阻塞）                                       |
 | UNLINK    | UNLINK k1 k2 k3                           | 在 keys 里面删除 k1 k2 k3,<br />正真删除有另外的线程执行，不阻塞 |
 | DUMP      | DUMP key                                  | 返回 key 序列话的值                                          |
 | EXPIRE    | EXPIRE key second                         | 设置过期时间                                                 |
+| PEXPIRE    | EXPIRE key milliseconds      | 设置过期时间  （单位是毫秒）                                               |
 | EXPIREAT  | EXPIREAT key timestamp                    | 指定时间戳，设置剩余时间                                     |
 | KEYS      | KEYS pattern                              | 返回符合条件的 key 列表                                      |
 | TTL       | TTL key                                   | 返回剩余时间                                                 |
@@ -22,7 +25,11 @@
 | MOVE      | MOVE key db                               | 数据移到 另一个 db 中                                        |
 | WAIT      | WAIT numslaves timeout                    | 阻塞当前客户端，直到指定的 salves 执行完成<br />最多等待 timeout 秒 |
 | SCAN      | SCAN cursor [MATCH pattern] [COUNT count] | 扫描 所有的键， 和 keys 一次返回所有 key 不同，<br />scan 能指定返回的值，和游标，多次返回。 |
-
+| DBSIZE |  DBSIZE | 当前数据库包含多少键值对  |
+| TYPE |  TYPE key | key 的类型  |
+| FLUSHDB |  FLUSHDB [ async ] | 清空当前数据库 <br /> async 异步执行 |
+| FLUSHALL |  FLUSHALL [ async ] | 清空所有数据库 <br /> async 异步执行 |
+| SWAPDB |  SWAPDB  index index | 交换数据库 |
 
 
 <h1 id='string-and-num'><a href='#string-and-num'> 字符串和数字 </a> </h1>

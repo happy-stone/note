@@ -5,3 +5,6 @@
 * [Redis](redis/redis.md)
   * [基本类型](redis/command.md)
   * [复杂类型](redis/more-type.md)
+  * [其他命令](redis/other-command.md)
+  * [数据库配置](redis/database-config.md)
+  * [持久化](redis/persistence.md)
