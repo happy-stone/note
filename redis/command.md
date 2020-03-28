@@ -1,4 +1,7 @@
-# key #
+### 开始之前，推荐阅读 [An introduction to Redis data types and abstractions](https://redis.io/topics/data-types-intro) 或者 [Redis 数据类型介绍](http://redis.cn/topics/data-types-intro.html) ###
+
+<h1 id='key'><a href='#key'> key </a> </h1>
+
 
 | 命令      | 格式                                      | 说明                                                         |
 | --------- | ----------------------------------------- | ------------------------------------------------------------ |
@@ -22,7 +25,8 @@
 
 
 
-# 字符串和数字 #
+<h1 id='string-and-num'><a href='#string-and-num'> 字符串和数字 </a> </h1>
+​    基本常用操作，其中对 bit 的操作单独放在下一节中介绍。
 
 | 命令        | 格式                                 | 说明                                                         |
 | ----------- | ------------------------------------ | ------------------------------------------------------------ |
@@ -31,12 +35,10 @@
 | PSETEX      | pset k pX v                          | 设置带有过期时间（单位 毫秒）的命令                          |
 | SETNX       | Set k v                              | 如果 k 不存在，执行命令                                      |
 | SETRANGE    | setrange k offset v                  | 对于 k 的值，偏移 offset 位之后设置新值，如果不存在 填充 `\x00`。 |
-| SETBIT      | setbit k offset v                    | 对 k 的值，偏移 offset 位，设置 bit                          |
 | MSET        | mset k1 v1 k2 v2                     | 同时设置多个值                                               |
 | MSETNX      | msetnx k1 v1 k2 v2                   | 如果 多个键 都不存在，则执行操作                             |
 | MGET        | mget k1 k2                           | 查询多个 键值                                                |
 | GET         | get k                                | 查询 k 的值，如果不存在，返回 nil                            |
-| GETBIT      | getbit k offset                      | 查询 k， 偏移 offset 位的 bit 值                             |
 | GETRANGE    | getrange k start end                 | 查询 k， 在 [start, end) 的值                                |
 | STRLEN      | strlen key                           | 查询长度                                                     |
 | APPEND      | append key value                     | 原值添加新值                                                 |
@@ -47,8 +49,21 @@
 | DESCBY      | descby key decrement                 | 如果原值是 数字，则减少 decrement                            |
 | DESC        | desc key                             | descby key 1                                                 |
 
-# 散列 Hash #
+<h1 id='BitMap'><a href='#BitMap'>BitMap</a></h1>
+​    位图 是由二进制位组成的数组，数组中的每个二进制位都有对应的索引（也是 offset），可以通过 offset 对位图中的数据进行操作。
 
+| 命令     | 格式                                                         | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| SETBIT   | setbit k offset v                                            | 对 k 的值，偏移 offset 位，设置 bit                          |
+| GETBIT   | getbit k offset                                              | 查询 k， 偏移 offset 位的 bit 值                             |
+| BITCOUNT | BITCOUNT key [start end]                                     | 统计在 [start, end] 之间有多少 个 1<br />start，end 表示 第几个 字节，不是位。 |
+| BITPOS   | BITPOS key bit [start] [end]                                 | 查找 第一个 被设置为 bit （0/1）的字节位置，<br />并返回。   |
+| BITOP    | BITOP operation <br />destkey key [key ...]                  | 对 多个 key 的数据进行操作，并存储在 dest 中。<br />operation 可以是 AND、OR、XOR、NOT |
+| BITFIELD | BITFIELD key <br />[GET type offset] <br />[SET type offset value]<br /> [INCRBY type offset increment] <br />[OVERFLOW  WRAP / SAT/ FAIL] | 在 位图 存储指定长度的整数，并对这些整数执行加减操作。<br />SET 在 offset 位置设置 type 类型的 value<br />GET 在 offset 位置获取 type 类型的 值<br />INCRBY 在 offset 位置 加减 type 类型的 increment<br />OVERFLOW 溢出处理，<br />WRAP（回绕，达到最大值之后，从最小值重新开始），<br />SAT（饱和，达到最大值就设置为最大值），<br />FAIL（如果一处就返回失败） |
+
+
+
+<h1 id='Hash'><a href='#Hash'> 散列 Hash </a> </h1>
 ​    一个 key 中，存储多个字段。基本操作和 string 差不多，命令前面 加上 `H`
 
 | 命令         | 格式                                           | 说明                                                         |
@@ -68,8 +83,7 @@
 | HINCRBY      | HINCRBY key field increment                    | 返回 哈希集 中 字段 的值 增加 increment                      |
 | HINCRBYFLOAT | HINCRBYFLOAT key field increment               | 和 HINCRBY 类似，增加浮点数                                  |
 
-# 列表 List #
-
+<h1 id='List'><a href='#List'>列表 List</a> </h1>
 ​    一种限行有序结构，按照元素被存储列表的顺序存储元素。`L` 开头表示从坐标操作，`R` 开头表示从右边操作。
 
 | 命令       | 格式                                  | 说明                                                         |
@@ -92,8 +106,7 @@
 | LREM       | LREM key count value                  | 删除 count 个 value<br />c > 0 , 从左向右操作<br />c < 0， 从右向左 操作<br />c = 0 ，删除所有 |
 | LLEN       | LLEN key                              | 返回 列表长度                                                |
 
-# 集合 Set
-
+<h1 id='Set'><a href='#Set'>集合 Set</a> </h1>
 ​    多个不重复的元素组成的集合，命令前面 加上 `S`。 集合可以执行 集合 运算 交集、并集、差集。（另外还有  Sorted Sets ）
 
 | 命令        | 格式                                                 | 说明                                                    |
@@ -113,21 +126,18 @@
 | SMOVE       | SMOVE source destination member                      | 移动 member                                             |
 | SSCAN       | SSCAN key cursor [MATCH pattern] <br />[COUNT count] | 扫描 集合，返回 符合 pattern 的 count个元素             |
 
-# 有序集合 Sorted Set
-
+<h1 id='Sorted-Set'><a href='#Sorted-Set'>有序集合 Sorted Set</a> </h1>
 内部元素按照  `分值` 排序的集合。命令前面 加上 `Z`。 
 
 | 命令             | 格式                                                         | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ZADD             | ZADD key [NX\|XX] [CH] [INCR] <br />score member [score member ...] | 添加 分值为 score 的 mem，<br />可以设置  NX（如果不存在）和 XX 如果存在 |
+| ZADD             | ZADD key [NX/XX] [CH] [INCR] <br />score member [score member ...] | 添加 分值为 score 的 mem，<br />可以设置  NX（如果不存在）和 XX 如果存在 |
 | ZSCORE           | ZSCORE key member                                            | 返回 mem 分值                                                |
 | ZRANK            | ZRANK key member                                             | 返回 mem 排名                                                |
 | ZREVRANK         | ZREVRANK key member                                          | 返回 从大到小 排序的排名                                     |
 | ZREM             | ZREM key member [member ...]                                 | 删除 mem                                                     |
 | ZPOPMAX          | ZPOPMAX key [count]                                          | 删除并返回有序集合中的最多 count 个分值最高的成员。          |
 | ZPOPMIN          | ZPOPMIN key [count]                                          | 删除并返回有序集合中的最多 count 个分值最低的成员。          |
-|                  |                                                              |                                                              |
-|                  |                                                              |                                                              |
 | ZCARD            | ZCARD key                                                    | 返回有序集元素个数                                           |
 | ZCOUNT           | ZCOUNT key min max                                           | 返回 分值 在 [min, max] 的 有序集元素个数                    |
 | ZLEXCOUNT        | ZLEXCOUNT key min max                                        | 计算有序集合中 在 [min, max] ,的成员数量。<br />注意和 ZCOUNT 的区别<br />min 和 max 可以是 分值 ，也可以是 集合中的元素 |
@@ -140,12 +150,10 @@
 | ZREMRANGEBYSCORE | ZREMRANGEBYSCORE key min max                                 | 按照分值排序，删除 在 [min, max] 的元素                      |
 | ZUNIONSTORE      | ZUNIONSTORE dest num key <br />[key ...] [WEIGHTS weight] [SUM/MIN/MAX] | 计算的num个有序集合的并，并且把结果放到 dest 中。<br />默认 新有序列表中元素的分值是该元素的 分值 之和。<br />WEIGHTS 指定 乘法因子。所有的 分值在传递给 聚合函数之前都要 乘以 乘法因子。默认是 1.<br />AGGREGATE 指定 分值的计算选项，默认是 SUM。<br />如果key destination存在，就被覆盖。 |
 | ZINTERSTORE      | ZINTERSTORE destination num key <br />[key ...] [WEIGHTS weight] [SUM/MIN/MAX] | 计算的num个有序集合的交集，并且把结果放到destination中<br />其他参数参考 `ZUNIONSTORE` |
-|                  |                                                              |                                                              |
 | ZREMRANGEBYSCORE | ZREMRANGEBYSCORE key min max                                 | 移除有序集中，所有score值 在 [min, max] 的成员               |
 | ZREVRANGE        | ZREVRANGE key start stop [WITHSCORES]                        | 按 分值排序（从大到小），符合条件的元素                      |
 | ZREVRANGEBYLEX   | ZREVRANGEBYLEX key max min [LIMIT offset count]              | 字典倒序排序， 符合条件的元素                                |
 | ZREVRANGEBYSCORE | ZREVRANGEBYSCORE key max min<br /> [WITHSCORES] [LIMIT offset count] | 返回有序集合中分值 在 [min, max]的成员，分数由高到低排序。<br />WITHSCORES 将成员分数一并返回<br />LIMIT 限定 偏移和数量 |
 | ZSCAN            | ZSCAN key cursor [MATCH pattern] [COUNT count]               | 扫描，返回符合条件的 count 个元素，<br />游标起始是 0， 后面使用返回的第一个值 |
 
-# HyperLogLog #
 
