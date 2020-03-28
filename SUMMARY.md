@@ -1,5 +1,6 @@
 * [项目介绍](README.md)
 * [Golang](golang/golang.md)
   * [基本类型](golang/base.md)
-  * [内置函数](golang/base.md)
+  * [内置函数](golang/buildin.md)
 * [Redis](redis/redis.md)
+  * [基本操作](redis/command.md)
