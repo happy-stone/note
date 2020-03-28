@@ -187,6 +187,45 @@
             
         </li>
     
+        <li class="chapter " data-level="1.3.3" data-path="other-command.html">
+            
+                <a href="other-command.html">
+            
+                    
+                    其他命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="database-config.html">
+            
+                <a href="database-config.html">
+            
+                    
+                    数据库配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="persistence.html">
+            
+                <a href="persistence.html">
+            
+                    
+                    持久化
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -251,6 +290,16 @@
 </thead>
 <tbody>
 <tr>
+<td>SELECT</td>
+<td>select db</td>
+<td>&#x5207;&#x6362;&#x6570;&#x636E;&#x5E93;</td>
+</tr>
+<tr>
+<td>KEYS</td>
+<td>keys pattern</td>
+<td>&#x83B7;&#x53D6;&#x4E0E; pattern &#x5339;&#x914D;&#x7684; keys</td>
+</tr>
+<tr>
 <td>EXISTS</td>
 <td>EXISTS key</td>
 <td>key &#x662F;&#x5426;&#x5B58;&#x5728;</td>
@@ -274,6 +323,11 @@
 <td>EXPIRE</td>
 <td>EXPIRE key second</td>
 <td>&#x8BBE;&#x7F6E;&#x8FC7;&#x671F;&#x65F6;&#x95F4;</td>
+</tr>
+<tr>
+<td>PEXPIRE</td>
+<td>EXPIRE key milliseconds</td>
+<td>&#x8BBE;&#x7F6E;&#x8FC7;&#x671F;&#x65F6;&#x95F4;  &#xFF08;&#x5355;&#x4F4D;&#x662F;&#x6BEB;&#x79D2;&#xFF09;</td>
 </tr>
 <tr>
 <td>EXPIREAT</td>
@@ -334,6 +388,31 @@
 <td>SCAN</td>
 <td>SCAN cursor [MATCH pattern] [COUNT count]</td>
 <td>&#x626B;&#x63CF; &#x6240;&#x6709;&#x7684;&#x952E;&#xFF0C; &#x548C; keys &#x4E00;&#x6B21;&#x8FD4;&#x56DE;&#x6240;&#x6709; key &#x4E0D;&#x540C;&#xFF0C;<br>scan &#x80FD;&#x6307;&#x5B9A;&#x8FD4;&#x56DE;&#x7684;&#x503C;&#xFF0C;&#x548C;&#x6E38;&#x6807;&#xFF0C;&#x591A;&#x6B21;&#x8FD4;&#x56DE;&#x3002;</td>
+</tr>
+<tr>
+<td>DBSIZE</td>
+<td>DBSIZE</td>
+<td>&#x5F53;&#x524D;&#x6570;&#x636E;&#x5E93;&#x5305;&#x542B;&#x591A;&#x5C11;&#x952E;&#x503C;&#x5BF9;</td>
+</tr>
+<tr>
+<td>TYPE</td>
+<td>TYPE key</td>
+<td>key &#x7684;&#x7C7B;&#x578B;</td>
+</tr>
+<tr>
+<td>FLUSHDB</td>
+<td>FLUSHDB [ async ]</td>
+<td>&#x6E05;&#x7A7A;&#x5F53;&#x524D;&#x6570;&#x636E;&#x5E93; <br> async &#x5F02;&#x6B65;&#x6267;&#x884C;</td>
+</tr>
+<tr>
+<td>FLUSHALL</td>
+<td>FLUSHALL [ async ]</td>
+<td>&#x6E05;&#x7A7A;&#x6240;&#x6709;&#x6570;&#x636E;&#x5E93; <br> async &#x5F02;&#x6B65;&#x6267;&#x884C;</td>
+</tr>
+<tr>
+<td>SWAPDB</td>
+<td>SWAPDB  index index</td>
+<td>&#x4EA4;&#x6362;&#x6570;&#x636E;&#x5E93;</td>
 </tr>
 </tbody>
 </table>
@@ -923,7 +1002,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"基本类型","level":"1.3.1","depth":2,"next":{"title":"复杂类型","level":"1.3.2","depth":2,"path":"redis/more-type.md","ref":"redis/more-type.md","articles":[]},"previous":{"title":"Redis","level":"1.3","depth":1,"path":"redis/redis.md","ref":"redis/redis.md","articles":[{"title":"基本类型","level":"1.3.1","depth":2,"path":"redis/command.md","ref":"redis/command.md","articles":[]},{"title":"复杂类型","level":"1.3.2","depth":2,"path":"redis/more-type.md","ref":"redis/more-type.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"redis/command.md","mtime":"2020-03-28T10:49:53.317Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-28T10:50:28.978Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"基本类型","level":"1.3.1","depth":2,"next":{"title":"复杂类型","level":"1.3.2","depth":2,"path":"redis/more-type.md","ref":"redis/more-type.md","articles":[]},"previous":{"title":"Redis","level":"1.3","depth":1,"path":"redis/redis.md","ref":"redis/redis.md","articles":[{"title":"基本类型","level":"1.3.1","depth":2,"path":"redis/command.md","ref":"redis/command.md","articles":[]},{"title":"复杂类型","level":"1.3.2","depth":2,"path":"redis/more-type.md","ref":"redis/more-type.md","articles":[]},{"title":"其他命令","level":"1.3.3","depth":2,"path":"redis/other-command.md","ref":"redis/other-command.md","articles":[]},{"title":"数据库配置","level":"1.3.4","depth":2,"path":"redis/database-config.md","ref":"redis/database-config.md","articles":[]},{"title":"持久化","level":"1.3.5","depth":2,"path":"redis/persistence.md","ref":"redis/persistence.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"redis/command.md","mtime":"2020-03-28T15:01:21.948Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-28T15:02:08.205Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
