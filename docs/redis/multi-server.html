@@ -1,0 +1,502 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>多机操作 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="persistence.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    项目介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../golang/golang.html">
+            
+                <a href="../golang/golang.html">
+            
+                    
+                    Golang
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../golang/base.html">
+            
+                <a href="../golang/base.html">
+            
+                    
+                    基本类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../golang/buildin.html">
+            
+                <a href="../golang/buildin.html">
+            
+                    
+                    内置函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="redis.html">
+            
+                <a href="redis.html">
+            
+                    
+                    Redis
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="command.html">
+            
+                <a href="command.html">
+            
+                    
+                    基本类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="more-type.html">
+            
+                <a href="more-type.html">
+            
+                    
+                    复杂类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="other-command.html">
+            
+                <a href="other-command.html">
+            
+                    
+                    其他命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="database-config.html">
+            
+                <a href="database-config.html">
+            
+                    
+                    数据库配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="persistence.html">
+            
+                <a href="persistence.html">
+            
+                    
+                    持久化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.6" data-path="multi-server.html">
+            
+                <a href="multi-server.html">
+            
+                    
+                    多机操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >多机操作</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="master-salve"><a href="#master-salve">&#x4E3B;&#x4ECE;&#x590D;&#x5236;</a></h1>
+
+<p>Redis &#x670D;&#x52A1;&#x5668;&#x5141;&#x8BB8;&#x7528;&#x6237;&#x521B;&#x5EFA;&#x591A;&#x4E2A;&#x62E5;&#x6709;&#x76F8;&#x540C;&#x6570;&#x636E;&#x5E93;&#x526F;&#x672C;&#x7684;&#x670D;&#x52A1;&#x5668;&#x3002;&#x8FD9;&#x4E9B;&#x670D;&#x52A1;&#x5668;&#x6210;&#x4E3A;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#xFF08;salve/replica&#xFF09;&#xFF0C;&#x6E90;&#x670D;&#x52A1;&#x5668;&#x6210;&#x4E3A;&#x4E3B;&#x670D;&#x52A1;&#x5668;&#xFF08;master&#xFF09;&#x3002;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x4E5F;&#x53EF;&#x4EE5;&#x4F5C;&#x4E3A;&#x4E3B;&#x670D;&#x52A1;&#x5668;&#x62E5;&#x6709;&#x591A;&#x4E2A;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x3002;&#x4F46;&#x662F;&#x4E00;&#x4E2A;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x53EA;&#x80FD;&#x6709;&#x4E00;&#x4E2A;&#x4E3B;&#x670D;&#x52A1;&#x5668;&#x3002;&#x4E00;&#x822C;&#x9ED8;&#x8BA4;&#x4E3B;&#x670D;&#x52A1;&#x5668;&#x6267;&#x884C;&#x5199;&#x64CD;&#x4F5C;&#xFF0C;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x6267;&#x884C;&#x8BFB;&#x64CD;&#x4F5C;&#x3002;</p>
+<p>&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x7684;&#x597D;&#x5904;&#x662F;&#xFF0C;&#xFF08;1&#xFF09;&#x5927;&#x5927;&#x63D0;&#x9AD8;&#x8BFB;&#x64CD;&#x4F5C;&#x7684;&#x6548;&#x7387;&#xFF0C;&#xFF08;2&#xFF09;&#x964D;&#x4F4E;&#x6570;&#x636E;&#x4E22;&#x5931;&#x7684;&#x53EF;&#x80FD;&#x3002;</p>
+<h4 id="&#x914D;&#x7F6E;&#x6587;&#x4EF6;">&#x914D;&#x7F6E;&#x6587;&#x4EF6;</h4>
+<table>
+<thead>
+<tr>
+<th>&#x914D;&#x7F6E;&#x9879;</th>
+<th>&#x53C2;&#x6570;</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>slaveof /  replicaof</td>
+<td>replicaof no one</td>
+<td>&#x672C;&#x673A;&#x662F; slave/replicaof &#x65F6;&#xFF0C;&#x6307;&#x5B9A; master &#x7684; ip &#x548C; port <br> 5.0 &#x4E4B;&#x540E;&#x7684;&#x7248;&#x672C;&#x4F7F;&#x7528; replicaof</td>
+</tr>
+<tr>
+<td>masterauth</td>
+<td></td>
+<td>&#x672C;&#x673A;&#x662F; slave &#x65F6;&#xFF0C;&#x6307;&#x5B9A; master &#x7684;&#x5BC6;&#x7801;</td>
+</tr>
+<tr>
+<td>replica-announce-ip</td>
+<td></td>
+<td>&#x672C;&#x673A;&#x662F; slave &#x65F6;&#xFF0C;&#x7533;&#x660E;&#x81EA;&#x5DF1;&#x7684; ip</td>
+</tr>
+<tr>
+<td>replica-announce-port</td>
+<td></td>
+<td>&#x672C;&#x673A;&#x662F; slave &#x65F6;&#xFF0C;&#x7533;&#x660E;&#x81EA;&#x5DF1;&#x7684; port</td>
+</tr>
+<tr>
+<td>replica-read-only</td>
+<td>yes</td>
+<td>&#x8BBE;&#x7F6E; slave &#x53EA;&#x8BFB;</td>
+</tr>
+<tr>
+<td>replica-serve-stale-data</td>
+<td>yes</td>
+<td></td>
+</tr>
+<tr>
+<td>repl-diskless-sync</td>
+<td>no</td>
+<td>&#x4E0D;&#x521B;&#x5EFA; RDB &#x6587;&#x4EF6;&#x76F4;&#x63A5;&#x590D;&#x5236;</td>
+</tr>
+<tr>
+<td>repl-diskless-sync-delay</td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td>repl-disable-tcp-nodelay</td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td>repl-backlog-size</td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td>repl-backlog-ttl</td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td>replica-priority</td>
+<td>100</td>
+<td>&#x4F18;&#x5148;&#x7EA7;</td>
+</tr>
+<tr>
+<td>min-replicas-max-lag</td>
+<td></td>
+<td>&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x4E0E;&#x4E3B;&#x670D;&#x52A1;&#x5668;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x901A;&#x4FE1;&#x95F4;&#x9694;&#x4E0D;&#x8D85;&#x8FC7; &#x591A;&#x5C11;&#x79D2;&#xFF0C;&#x624D;&#x6267;&#x884C;&#x5199;&#x64CD;&#x4F5C;</td>
+</tr>
+<tr>
+<td>min-replicas-to-write</td>
+<td></td>
+<td>&#x81F3;&#x5C11;&#x6709;&#x591A;&#x5C11;&#x53F0;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x624D;&#x6267;&#x884C;&#x5199;&#x547D;&#x4EE4;</td>
+</tr>
+</tbody>
+</table>
+<h4 id="&#x547D;&#x4EE4;&#x884C;&#x64CD;&#x4F5C;">&#x547D;&#x4EE4;&#x884C;&#x64CD;&#x4F5C;</h4>
+<table>
+<thead>
+<tr>
+<th>&#x547D;&#x4EE4;</th>
+<th>&#x53C2;&#x6570;</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>slaveof / replicaof</td>
+<td>replicaof host port</td>
+<td>&#x540C;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</td>
+</tr>
+<tr>
+<td>ROLE</td>
+<td>ROLE</td>
+<td>&#x67E5;&#x8BE2;&#x5F53;&#x524D;&#x670D;&#x52A1;&#x5668;&#x89D2;&#x8272;</td>
+</tr>
+</tbody>
+</table>
+<h1 id="Sentinel"><a href="#Sentinel">&#x54E8;&#x5175; Sentinel</a></h1>
+
+<p>&#x5177;&#x6709;&#x4E3B;&#x4ECE;&#x6A21;&#x5F0F;&#x7684; Redis &#x670D;&#x52A1;&#x5668;&#x7406;&#x8BBA;&#x4E0A;&#x6570;&#x636E;&#x662F;&#x4E00;&#x81F4;&#x7684;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x53EF;&#x4EE5;&#x76F8;&#x4E92;&#x66FF;&#x6362;&#x7684;&#x3002;&#x5982;&#x679C;&#x4E3B;&#x670D;&#x52A1;&#x5668;&#x6545;&#x969C;&#x662F;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;&#x67D0;&#x4E2A;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x8BBE;&#x7F6E;&#x4E3A;&#x4E3B;&#x670D;&#x52A1;&#x5668;&#x3002;</p>
+<p>&#x7406;&#x8BBA;&#x4E0A;&#xFF0C;&#x6709;&#x4E3B;&#x670D;&#x52A1;&#x5668; Matser &#x548C;&#x4E24;&#x4E2A;&#x4ECE;&#x670D;&#x52A1;&#x5668; Repl-1 &#x548C; Repl-2 &#xFF0C;&#x5982;&#x679C; Master &#x73B0;&#x5728;&#x6545;&#x969C;&#x4E86;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5728; Repl-1 &#x6267;&#x884C; <code>replicaof no one</code>&#xFF0C;&#x5C06; Repl-1 &#x8BBE;&#x7F6E;&#x6210;&#x4E3B;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x5728; Repl-2 &#x4E0A;&#x6267;&#x884C; <code>replicaof Repl-1.ip Repl-1.port</code>,&#x628A; Repl-2 &#x8BBE;&#x7F6E;&#x6210; Repl-1 &#x7684;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x3002;&#x4F46;&#x662F;&#x8FD9;&#x4E48;&#x505A;&#x6BD4;&#x8F83;&#x9EBB;&#x70E6;&#x3002;</p>
+<p>Redis &#x63D0;&#x4F9B;&#x4E86; RedisSentinel &#x5DE5;&#x5177;&#x3002;Redis Sentinel &#x53EF;&#x4EE5;&#x76D1;&#x89C6;&#x591A;&#x4E2A;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x5F53;&#x4E3B;&#x670D;&#x52A1;&#x5668;&#x4E0B;&#x7EBF;&#x65F6;&#xFF0C;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x5F53;&#x4F5C;&#x4E3B;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x5E76;&#x5C06;&#x53E6;&#x5916;&#x7684;&#x670D;&#x52A1;&#x5668;&#x8F6C;&#x4E3A;&#x65B0;&#x4E3B;&#x670D;&#x52A1;&#x5668;&#x7684;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x3002;</p>
+<p>&#x8BBE;&#x7F6E; sentinel.conf&#xFF0C;&#x5E76;&#x542F;&#x52A8; Redis Sentinel</p>
+<pre><code class="lang-bash">$ redis-sentinel /etc/sentinel.conf
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x591A;&#x4E2A; Sentinel&#xFF0C;&#x542F;&#x52A8; Sentinel &#x7F51;&#x7EDC;&#x3002;</p>
+<h1 id="cluster"><a href="#cluster">&#x96C6;&#x7FA4; cluster</a></h1>
+
+<p>Redis &#x96C6;&#x7FA4; <a href="https://redis.io/topics/cluster-tutorial" target="_blank">https://redis.io/topics/cluster-tutorial</a> &#x63D0;&#x4F9B;&#x4E86;&#x4E3B;&#x4ECE;&#x590D;&#x5236;&#xFF0C;&#x54E8;&#x5175;&#x529F;&#x80FD;&#x3002;&#x96C6;&#x7FA4;&#x4E2D;&#x7684;&#x670D;&#x52A1;&#x5668;&#x79F0;&#x4E3A;&#x8282;&#x70B9;&#xFF08;node&#xFF09;&#xFF0C;&#x4E3B;&#x8282;&#x70B9;&#xFF08;master node&#xFF09;&#x8D1F;&#x8D23;&#x5904;&#x7406;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x7684;&#x8BFB;&#x5199;&#x8BF7;&#x6C42;&#xFF0C;&#x4ECE;&#x8282;&#x70B9;&#x8D1F;&#x8D23;&#x5BF9;&#x4E3B;&#x8282;&#x70B9;&#x590D;&#x5236;&#xFF0C;&#x4E3B;&#x8282;&#x70B9;&#x548C;&#x4ECE;&#x8282;&#x70B9;&#x90FD;&#x53EF;&#x4EE5;&#x6709;&#x591A;&#x4E2A;&#xFF0C;&#x4F46;&#x662F;&#x4E00;&#x4E2A;&#x4ECE;&#x8282;&#x70B9;&#x53EA;&#x80FD;&#x6709;&#x4E00;&#x4E2A;&#x4E3B;&#x8282;&#x70B9;&#x3002;Redis &#x96C6;&#x7FA4;&#x5C06;&#x6570;&#x636E;&#x5206;&#x6563;&#x5B58;&#x50A8;&#x5230;&#x591A;&#x4E2A;&#x8282;&#x70B9;&#x6765;&#x5E73;&#x8861;&#x5404;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x8D1F;&#x8F7D;&#x538B;&#x529B;&#xFF0C;&#x800C;&#x4E3B;&#x4ECE;&#x590D;&#x5236;&#x5219;&#x662F;&#x6BCF;&#x53F0;&#x673A;&#x5668;&#x90FD;&#x4FDD;&#x5B58;&#x5B8C;&#x6574;&#x7684;&#x6570;&#x636E;&#x3002;</p>
+<p>Redis &#x96C6;&#x7FA4;&#x4F1A;&#x628A;&#x6570;&#x636E;&#x5E93;&#x7A7A;&#x95F4;&#x5212;&#x5206;&#x6210; 16384 &#x4E2A;&#x69FD;&#xFF08;slot&#xFF09;&#x6765;&#x5B9E;&#x73B0;&#x6570;&#x636E;&#x5206;&#x7247;&#xFF08;sharding&#xFF09;&#x3002;&#x5F53;&#x7528;&#x6237;&#x65B0;&#x589E;&#x4E00;&#x4E2A;&#x952E;&#xFF08;key&#xFF09;&#x65F6;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x4F1A;&#x5148;&#x8BA1;&#x7B97;&#x952E;&#x6240;&#x5C5E;&#x7684;&#x69FD;&#xFF0C;&#x7136;&#x540E;&#x5728;&#x8BB0;&#x5F55;&#x96C6;&#x7FA4;&#x8282;&#x70B9;&#x7684;&#x69FD;&#x5206;&#x5E03;&#x72B6;&#x6001;&#x7684;&#x6620;&#x5C04;&#x8868;&#x4E2D;&#x627E;&#x51FA;&#x5904;&#x7406;&#x8BE5;&#x69FD;&#x7684;&#x8282;&#x70B9;&#xFF0C;&#x6700;&#x540E;&#x5C06;&#x8BE5;&#x952E;&#x5B58;&#x50A8;&#x5230;&#x76F8;&#x5E94;&#x7684;&#x8282;&#x70B9;&#x4E2D;&#x3002;&#x5982;&#x679C;&#x65B0;&#x52A0;&#x5165;&#x8282;&#x70B9;&#xFF0C;&#x96C6;&#x7FA4;&#x4F1A;&#x81EA;&#x52A8;&#x5904;&#x7406;&#x69FD;&#x7684;&#x5206;&#x914D;&#x548C;&#x6570;&#x636E;&#x8FC1;&#x79FB;&#xFF0C;&#x4E14;&#x6570;&#x636E;&#x5E93;&#x4E0D;&#x4F1A;&#x505C;&#x673A;&#x3002;</p>
+<p>&#x64CD;&#x4F5C;</p>
+<pre><code class="lang-bash">$ // &#x521B;&#x5EFA;&#x96C6;&#x7FA4;&#x6587;&#x4EF6;&#x5939;
+$ mkdir redis-culster
+$ <span class="hljs-built_in">cd</span> redis-culster
+$ // &#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x5939;
+$ mkdir node1 node2 node3 node4 node5 node6 
+$ // &#x6BCF;&#x4E2A;&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; redis.conf, &#x7AEF;&#x53E3;&#x53F7;&#x4E0D;&#x540C; 30001 -30006
+$ <span class="hljs-built_in">echo</span> <span class="hljs-_">-e</span> <span class="hljs-string">&quot;cluster-enabled yes\nport 30001\ncluster-config-file nodes.conf\ncluster-node-timeout 5000\ndaemonize yes&quot;</span> &gt; node1/redis.conf
+$ ...
+$ // &#x6BCF;&#x4E2A;&#x8282;&#x70B9;
+$ <span class="hljs-built_in">cd</span> node1; redis-server redis.conf
+$ ...
+$ // &#x521B;&#x5EFA;&#x96C6;&#x7FA4;&#xFF0C;&#x5E76;&#x8BBE;&#x7F6E;&#x6BCF;&#x4E2A;&#x4E3B;&#x8282;&#x70B9;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x4ECE;&#x8282;&#x70B9;
+$ redis-cli --culster create 127.0.0.1:30001 127.0.0.1:30002 ... 127.0.0.1:30006 --cluster-replicas 1
+</code></pre>
+<p><br><br><br><br><br></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="persistence.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 持久化">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"多机操作","level":"1.3.6","depth":2,"previous":{"title":"持久化","level":"1.3.5","depth":2,"path":"redis/persistence.md","ref":"redis/persistence.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"redis/multi-server.md","mtime":"2020-03-29T07:36:58.310Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-29T07:37:38.022Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
