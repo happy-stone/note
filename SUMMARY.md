@@ -9,3 +9,4 @@
   * [数据库配置](redis/database-config.md)
   * [持久化](redis/persistence.md)
   * [多机操作](redis/multi-server.md)
+  * [常见问题](redis/common-problem.md)
