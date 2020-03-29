@@ -8,3 +8,4 @@
   * [其他命令](redis/other-command.md)
   * [数据库配置](redis/database-config.md)
   * [持久化](redis/persistence.md)
+  * [多机操作](redis/multi-server.md)

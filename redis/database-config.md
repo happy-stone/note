@@ -36,19 +36,3 @@
 | activerehashing           | yes                                            | 指定是否激活重置哈希                                         |
 | include                   |                                                | 包含其它的配置文件位置                                       |
 
-
-
-<h1 id="master-salve"><a href="#master-salve">主从</a></h1>
-
-
-| 配置项                    | 默认值 | 说明                                       |
-| ------------------------- | ------ | ------------------------------------------ |
-| cluster-announce-ip       |        | 如果是集群模式，设置集群对外的 ip          |
-| cluster-announce-port     |        | 集群对外的 端口                            |
-| cluster-announce-bus-port |        | 集群总线端口                               |
-|                           |        |                                            |
-| slaveof                   |        | 本机是 slave 时，指定 master 的 ip 和 port |
-| masterauth                |        | 本机是 slave 时，指定 master 的密码        |
-| slave-announce-ip         |        | 本机是 slave 时，申明自己的 ip             |
-| slave-announce-port       |        | 本机是 slave 时，申明自己的 port           |
-| slave-read-only           | yes    | 设置 slave 只读                            |
