@@ -12,3 +12,4 @@
   * [常见问题](redis/common-problem.md)
 * [MySQL](mysql/mysql.md)
   * [事务](mysql/transaction.md)
+  * [性能](mysql/performance.md)
